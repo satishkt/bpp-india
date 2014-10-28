@@ -12,7 +12,7 @@ from scrapy import log
 
 #BOT_NAME = 'priceup'
 
-SPIDER_MODULES = ['priceup.spiders']
+SPIDER_MODULES = ['bpp-india.spiders']
 #NEWSPIDER_MODULE = 'priceup.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -26,7 +26,7 @@ ELASTICSEARCH_SERVER = 'localhost' # If not 'localhost' prepend 'http://'
 ELASTICSEARCH_PORT = 9200 # If port 80 leave blank
 ELASTICSEARCH_USERNAME = ''
 ELASTICSEARCH_PASSWORD = ''
-ELASTICSEARCH_INDEX = 'priceup'
+ELASTICSEARCH_INDEX = 'bpp-india'
 ELASTICSEARCH_TYPE = 'items'
 ELASTICSEARCH_UNIQ_KEY = 'description'
 ELASTICSEARCH_LOG_LEVEL = log.DEBUG

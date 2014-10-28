@@ -6,9 +6,10 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-from scrapy.item import Item, Field
+from scrapy import Field
 
-class PriceupItem(scrapy.Item):
+
+class BillionPricesIndiaItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     date = Field()
@@ -22,6 +23,5 @@ class PriceupItem(scrapy.Item):
     state = Field()
     discount = Field()
     weight = Field()
-
 
     last_updated = scrapy.Field(serializer=str)

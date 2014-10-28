@@ -4,7 +4,7 @@ import scrapy
 from bs4 import BeautifulSoup
 from scrapy import Selector
 import time
-from priceup.items import PriceupItem
+from items import PriceupItem
 
 class PriceSpider(scrapy.Spider):
     name = "pricedekho"
