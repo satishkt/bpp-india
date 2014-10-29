@@ -6,14 +6,16 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-from scrapy import Field
+from scrapy.item import Field
 
 
 class BillionPricesIndiaItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     date = Field()
+    product = Field()
     product_name = Field()
+    quantity = Field()
     category = Field()
     description = Field()
     vendor = Field()
