@@ -1,0 +1,31 @@
+On the inflation calculation side we need to close on all the categories we need, from BLS , they use the following categories to calculate CPI, chances are we might not find all the data for us for india - at least online. The way price inflation is calculated is that each fo these categories contributes to an index and then the weighted mean of those indexes gives us the CPI. If we do not get data for all these categories, we should then choose to compute indices that we can get the data for. 
+
+So for instance , we might not get data for medical care, housing and education and communication while we might be able to get data for all other categories - Things like fuel we can compute either using daily international market prices (I think India, fuel is not regulated any more).
+
+We can then choose to present category inflation or a combined weighted inflation as our output parameters.
+
+The weights (for CPI in the US) are here : http://www.bls.gov/news.release/archives/cpi_10222014.htm . Now this might be different for India, but for now lets just use them. We can fix these weights for accuracy later  (I think if we can get our index to track the officially reported trend, we are good).
+
+
+
+
+
+
+The CPI represents all goods and services purchased for consumption by the reference population (U or W) BLS has classified all expenditure items into more than 200 categories, arranged into eight major groups. Major groups and examples of categories in each are as follows:
+
+FOOD AND BEVERAGES (breakfast cereal, milk, coffee, chicken, wine, full service meals, snacks)
+HOUSING (rent of primary residence, owners' equivalent rent, fuel oil, bedroom furniture)
+APPAREL (men's shirts and sweaters, women's dresses, jewelry)
+TRANSPORTATION (new vehicles, airline fares, gasoline, motor vehicle insurance)
+MEDICAL CARE (prescription drugs and medical supplies, physicians' services, eyeglasses and eye care, hospital services)
+RECREATION (televisions, toys, pets and pet products, sports equipment, admissions);
+EDUCATION AND COMMUNICATION (college tuition, postage, telephone services, computer software and accessories);
+OTHER GOODS AND SERVICES (tobacco and smoking products, haircuts and other personal services, funeral expenses).
+
+
+Also included within these major groups are various government-charged user fees, such as water and sewerage charges, auto registration fees, and vehicle tolls. In addition, the CPI includes taxes (such as sales and excise taxes) that are directly associated with the prices of specific goods and services. However, the CPI excludes taxes (such as income and Social Security taxes) not directly associated with the purchase of consumer goods and services.
+
+The CPI does not include investment items, such as stocks, bonds, real estate, and life insurance. (These items relate to savings and not to day-to-day consumption expenses.)
+
+For each of the more than 200 item categories, using scientific statistical procedures, the Bureau has chosen samples of several hundred specific items within selected business establishments frequented by consumers to represent the thousands of varieties available in the marketplace. For example, in a given supermarket, the Bureau may choose a plastic bag of golden delicious apples, U.S. extra fancy grade, weighing 4.4 pounds to represent the Apples category.
+
