@@ -44,8 +44,7 @@ class PriceSpider(scrapy.Spider):
 
         baseurl=response.url+"#!page=1"
         response_home=scrapy.Request(baseurl)
-        pagenolist=[17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
-        for pageno in pagenolist:
+        for pageno in range(1,17):
             page_url=response_home.url+"#!page="+str(pageno)
 
             log.msg("Page URL -"+page_url)
@@ -74,7 +73,6 @@ class PriceSpider(scrapy.Spider):
         if len(variants)!=0 or variants!=None:
             items = []
             for variant in variants:
-
                 quantity=variant.split('-')[0].strip()
                 price=re.findall(r'[Rs ]\d+\.?\d*',variant)
                 if quantity not in quantitylist or price not in pricelist:
