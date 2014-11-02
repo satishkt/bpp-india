@@ -1,5 +1,6 @@
 __author__ = 'mandeepak'
 
+
 import re
 
 from scrapy.log import ScrapyFileLogObserver
@@ -23,15 +24,11 @@ import time
 
 class PriceSpider(scrapy.Spider):
 
-    name = "bb_personal_care"
+    name = "personal_care"
     allowed_domains = ["bigbasket.com"]
-    start_urls = ['http://bigbasket.com/cl/%s/?sid=uGJsxoSiY2OjMzgxom1kA6FjA6Jhb8I=#' %s for s in ['personal-care']]
-
-    # In case we want to crawl all categories
-    #start_urls = ['http://bigbasket.com/product/all-categories/?sid=uGJsxoSiY2OjMzgxom1kA6FjA6Jhb8I=#']
+    start_urls = ['http://bigbasket.com/cl/personal-care/?sid=AooQO4SiY2OjMzUxom1kA6FjA6Jhb8I%3D']
 
     category=""
-
 
     def __init__(self, *args, **kwargs):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
@@ -45,53 +42,22 @@ class PriceSpider(scrapy.Spider):
         return domain
 
     def parse(self, response):
-        allpages=['#!page=1']
-        log.msg(response.url)
-        for pageno in response.xpath('//a[@class="num uiv2-pagination-link"]/@href').extract():
-            if pageno not in allpages:
-                allpages.append(pageno.strip())
 
-        for pageno in allpages:
-            page_url=response.url+pageno
+        baseurl=response.url+"#!page=1"
+        response_home=scrapy.Request(baseurl)
+        for pageno in range(1,57):
+            page_url=response_home.url+"#!page="+str(pageno)
+            log.msg("Page URL -"+page_url)
+            scrapy.Request(page_url)
             self.category=page_url.split("/")[4]
-            yield scrapy.Request(page_url, callback=self.search,
-                cookies={'_bb_vid':'"MzEzMTU5NTAwMg=="'}
+            yield scrapy.Request(page_url, callback=self.search
                 )
-
-
-
-    # def parse(self, response):
-    #     log.msg(response.url)
-    #     hostURL=self.__getHostURL(response.url)
-    #     for category in response.xpath('//div[@class="dp_headding"]/a/@href').extract():
-    #         page_url=hostURL+category[1:]
-    #         yield scrapy.Request(page_url, callback=self.home_category,
-    #             cookies={'_bb_vid':'"MzEzMTU5NTAwMg=="'}
-    #             )
-    #
-    #
-    # def home_category(self, response):
-    #     allpages=['#!page=1']
-    #     log.msg(response.url)
-    #
-    #     for pageno in response.xpath('//a[@class="num uiv2-pagination-link"]/@href').extract():
-    #         if pageno not in allpages:
-    #             allpages.append(pageno.strip())
-    #
-    #     for pageno in allpages:
-    #         page_url=response.url+"&sid=uGJsxoSiY2OjMzgxom1kA6FjA6Jhb8I=#"+pageno[1:]
-    #         self.category=page_url.split("/")[4]
-    #         yield scrapy.Request(page_url, callback=self.search,
-    #             cookies={'_bb_vid':'"MzEzMTU5NTAwMg=="'}
-    #             )
-
-
-
 
     def search(self,response):
         for url in response.xpath('//div[@class="uiv2-list-box-img-block"]/a/@href').extract():
             hostURL=self.__getHostURL(response.url)
             page_url=hostURL+url[1:]
+            log.msg(page_url)
             log.msg('yield process, url:' + page_url)
             yield scrapy.Request(page_url, callback=self.detail,
             cookies={'_bb_vid':'"MzEzMTU5NTAwMg=="'}
@@ -102,21 +68,28 @@ class PriceSpider(scrapy.Spider):
         productTitle=response.url.split("/")[-2]
         hxs = HtmlXPathSelector(response)
         variants=hxs.select("//div[@class='uiv2-size-variants']/label/text()").extract()
+        quantitylist=[]
+        pricelist=[]
         if len(variants)!=0 or variants!=None:
             items = []
             for variant in variants:
                 quantity=variant.split('-')[0].strip()
-                price=re.findall(r'\d+\.?\d*',variant)
-                item = BillionPricesIndiaItem()
-                item['date']=str(time.strftime("%d/%m/%Y"))
-                item['product'] = productTitle
-                item['category'] = self.category
-                item['quantity'] = quantity
-                if len(price)==1:
-                    item['price']=price[0]
-                else:
-                    item['price']=price[1]
-                items.append(item)
+                price=re.findall(r'[Rs ]\d+\.?\d*',variant)
+                if quantity not in quantitylist or price not in pricelist:
+                    item = BillionPricesIndiaItem()
+                    quantitylist.append(quantity)
+                    item['quantity'] = quantity
+                    if len(price)==1:
+                        pricelist.append(price)
+                        item['price']=price[0]
+                    elif len(price)!=1:
+                        pricelist.append(price)
+                        item['price']=price[1]
+
+                    item['date']=str(time.strftime("%d/%m/%Y"))
+                    item['product'] = productTitle
+                    item['category'] = self.category
+                    items.append(item)
             else:
 
                 price=hxs.select("//div[@class='uiv2-price']/text()").extract()
@@ -126,9 +99,9 @@ class PriceSpider(scrapy.Spider):
                 item['product'] = productTitle
                 item['category'] = self.category
                 item['quantity'] = quantity
-                if len(price)==1:
+                if len(price)==1 and price not in pricelist:
                     item['price']=price[0]
-                else:
+                elif len(price)!=1 and price not in pricelist:
                     item['price']=price[1]
                 items.append(item)
 
