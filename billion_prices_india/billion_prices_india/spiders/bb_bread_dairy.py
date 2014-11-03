@@ -79,6 +79,10 @@ class PriceSpider(scrapy.Spider):
                     item = BillionPricesIndiaItem()
                     quantitylist.append(quantity)
                     item['quantity'] = quantity
+                    item['date']=str(time.strftime("%d/%m/%Y"))
+                    item['vendor']='bigbasket'
+                    item['product'] = productTitle
+                    item['category'] = self.category
                     if len(price)==1:
                         pricelist.append(price)
                         item['price']=price[0]
@@ -86,19 +90,18 @@ class PriceSpider(scrapy.Spider):
                         pricelist.append(price)
                         item['price']=price[1]
 
-                    item['date']=str(time.strftime("%d/%m/%Y"))
-                    item['product'] = productTitle
-                    item['category'] = self.category
                     items.append(item)
             else:
 
                 price=hxs.select("//div[@class='uiv2-price']/text()").extract()
                 quantity=hxs.select("//div[@class='uiv2-field-wrap mt10']/text()").extract()[0].strip()
                 item = BillionPricesIndiaItem()
+                item['quantity'] = quantity
                 item['date']=str(time.strftime("%d/%m/%Y"))
+                item['vendor']='bigbasket'
                 item['product'] = productTitle
                 item['category'] = self.category
-                item['quantity'] = quantity
+
                 if len(price)==1 and price not in pricelist:
                     item['price']=price[0]
                 elif len(price)!=1 and price not in pricelist:
