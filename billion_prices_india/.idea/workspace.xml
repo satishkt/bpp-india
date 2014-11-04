@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8093a149-bff8-4c6e-9b64-f9721d8e85ea" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py" afterPath="$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/billion_prices_india/items.py" afterPath="$PROJECT_DIR$/billion_prices_india/items.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_stationery.py" afterPath="$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_stationery.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="billion_prices_india.iws" />
@@ -15,7 +18,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="PyCharm30/coverage/billion_prices_india$crawler.coverage" NAME="crawler Coverage Results" MODIFIED="1414552131142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/billion_prices_india$lb_fruitsveggies.coverage" NAME="lb_fruitsveggies Coverage Results" MODIFIED="1415078488527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/billion_prices_india$lb_fruitsveggies.coverage" NAME="lb_fruitsveggies Coverage Results" MODIFIED="1415103638272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/billion_prices_india$lb_fruitsvegetables.coverage" NAME="lb_fruitsvegetables Coverage Results" MODIFIED="1415078239924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/billion_prices_india/spiders/lb" />
     <SUITE FILE_PATH="coverage/billion_prices_india$LocalBanya2Crawler.coverage" NAME="LocalBanya2Crawler Coverage Results" MODIFIED="1415077677610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/billion_prices_india/spiders/localbanya" />
     <SUITE FILE_PATH="PyCharm30/coverage/billion_prices_india$PriceDekhoMobile.coverage" NAME="PriceDekhoMobile Coverage Results" MODIFIED="1414472587509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -35,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocalBanya2Crawler.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LocalBanya2Crawler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="860">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.9351145" vertical-offset="0" max-vertical-offset="1120">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
               </folding>
@@ -47,21 +50,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lb_organicfoods.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_organicfoods.py">
+      <file leaf-file-name="pd_dresses.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/pd_dresses.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="140">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="526" max-vertical-offset="1780">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lb_stationery.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pd_laptops.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/pd_laptops.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1540">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lb_stationery.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_stationery.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.01908397" vertical-offset="0" max-vertical-offset="1048">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="items.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/billion_prices_india/items.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -71,20 +94,8 @@
         <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_vegfruits.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb_fruitsvegetables_products.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lb_fruitsvegetables_products.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="839" max-vertical-offset="4220">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1415078529000" expanded="true" signature="45:19235" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -106,7 +117,6 @@
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/PriceDekhoMobileSpider.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/settings.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/pipelines.py" />
-        <option value="$PROJECT_DIR$/billion_prices_india/items.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/crawler.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/SnapdealCrawler.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/test.xhtml" />
@@ -117,11 +127,12 @@
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/localbanya/lb_fruitsvegetables.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/lb_fruitsvegetables.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/LocalBanya2Crawler.py" />
-        <option value="$PROJECT_DIR$/lb_fruitsvegetables_products.xml" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_vegfruits.py" />
-        <option value="$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_organicfoods.py" />
         <option value="$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_stationery.py" />
+        <option value="$PROJECT_DIR$/lb_fruitsvegetables_products.xml" />
+        <option value="$PROJECT_DIR$/billion_prices_india/items.py" />
+        <option value="$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py" />
       </list>
     </option>
   </component>
@@ -543,7 +554,11 @@
       <created>1415078659780</created>
       <updated>1415078659780</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added crawlers for local banya">
+      <created>1415078669853</created>
+      <updated>1415078669853</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -562,7 +577,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.223193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5760618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4084942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -613,13 +628,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="15" />
     </breakpoint-manager>
   </component>
@@ -791,22 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider_error.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/pd_laptops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0952381" vertical-offset="0" max-vertical-offset="1540">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/PriceDekhoMobileSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="0" max-vertical-offset="2120">
@@ -847,33 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/pd_dresses.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
-          <caret line="31" column="212" selection-start-line="31" selection-start-column="212" selection-end-line="31" selection-end-column="212" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider.log">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75051975" vertical-offset="179" max-vertical-offset="660">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrapy.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/billion_prices_india/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
@@ -906,14 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/billion_prices_india/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="139" max-vertical-offset="660">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/billion_prices_india/middleware.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="820">
@@ -938,34 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lb_fruitsvegetables_products.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="839" max-vertical-offset="1360">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1415078529000" expanded="true" signature="45:19235" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_vegfruits.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="860">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_organicfoods.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="521">
@@ -976,9 +905,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_stationery.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.01908397" vertical-offset="0" max-vertical-offset="1048">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/pd_laptops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1540">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/lb_vegfruits.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/pd_dresses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1780">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/scs-work/lib/python2.7/site-packages/scrapy/item.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40379405" vertical-offset="1022" max-vertical-offset="1760">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider.log">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77363896" vertical-offset="0" max-vertical-offset="698">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29810297" vertical-offset="0" max-vertical-offset="738">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider_error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/billion_prices_india/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/billion_prices_india/spiders/lb/LocalBanya2Crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9351145" vertical-offset="0" max-vertical-offset="1120">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
