@@ -25,5 +25,6 @@ class BillionPricesIndiaItem(scrapy.Item):
     state = Field()
     discount = Field()
     weight = Field()
+    product_url = Field()
 
     last_updated = scrapy.Field(serializer=str)
