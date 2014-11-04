@@ -1,27 +1,15 @@
 __author__ = 'mandeepak'
 __author__ = 'mandeepak'
 
-import re
+from urlparse import urlparse
+import logging
 
-from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
-from scrapy.contrib.loader import XPathItemLoader
 from scrapy.log import ScrapyFileLogObserver
 import scrapy
 from scrapy.selector import HtmlXPathSelector
 from scrapy import log
+
 from billion_prices_india.items import BillionPricesIndiaItem
-from scrapy.selector import HtmlXPathSelector
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-from scrapy.contrib.spiders import CrawlSpider, Rule
-from scrapy.http import Request
-from scrapy import log
-from os import path
-import os
-import urllib
-import string
-from bs4 import UnicodeDammit
-from urlparse import urlparse
-import logging
 import time
 
 

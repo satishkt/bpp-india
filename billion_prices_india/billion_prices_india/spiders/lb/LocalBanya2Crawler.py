@@ -16,17 +16,15 @@ class LocalBanya2Crawler(CrawlSpider):
 
     rules = (
         Rule(LxmlLinkExtractor(allow='products/'), callback='parse_category', follow=True),
-        Rule(LxmlLinkExtractor(allow='product-details/Fruits---Vegetables'),callback= 'parse_product',follow= True),
+        Rule(LxmlLinkExtractor(allow='product-details/Fruits---Vegetables'), callback='parse_product', follow=True),
         Rule(LxmlLinkExtractor(allow='product-details/Personal-Care'),callback= 'parse_product',follow= True),
     )
 
     def parse_category(self, response):
         self.response_url = response.url
-        print "category parsing"
         print self.response_url
 
     def parse_product(self,response):
-        print "product parsing"
         product_url = response.url
         print product_url
         l = XPathItemLoader(item = BillionPricesIndiaItem(),response=response)
