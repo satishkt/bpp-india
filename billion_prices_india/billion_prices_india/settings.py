@@ -40,7 +40,14 @@ COOKIES_DEBUG = True
 # ELASTICSEARCH_LOG_LEVEL = log.DEBUG
 
 ITEM_PIPELINES = {
-    'billion_prices_india.pipelines.XmlExportPipeline': 800,
+    'billion_prices_india.pipelines.MongoDBPipeline',
 }
 
 LOG_LEVEL = 'INFO'
+
+
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "bpp"
+MONGODB_COLLECTION = 'items'
