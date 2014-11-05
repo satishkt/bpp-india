@@ -23,7 +23,7 @@ import time
 
 class PriceSpider(scrapy.Spider):
 
-    name = "grocery_staples"
+    name = "bb_grocery_staples"
     allowed_domains = ["bigbasket.com"]
     start_urls = ['http://bigbasket.com/cl/grocery-staples/?sid=AooQO4SiY2OjMzUxom1kA6FjA6Jhb8I%3D']
 

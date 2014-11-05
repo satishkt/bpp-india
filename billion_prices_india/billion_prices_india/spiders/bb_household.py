@@ -25,7 +25,7 @@ import time
 
 class PriceSpider(scrapy.Spider):
 
-    name = "household"
+    name = "bb_household"
     allowed_domains = ["bigbasket.com"]
     start_urls = ['http://bigbasket.com/cl/household/?sid=AooQO4SiY2OjMzUxom1kA6FjA6Jhb8I%3D']
 
