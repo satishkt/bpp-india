@@ -23,6 +23,7 @@ class BillionPricesIndiaItem(scrapy.Item):
     store = Field()
     country = Field()
     state = Field()
+    city = Field()
     discount = Field()
     weight = Field()
     product_url = Field()

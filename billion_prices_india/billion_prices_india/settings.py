@@ -44,5 +44,5 @@ ITEM_PIPELINES = {
 
 LOG_LEVEL = 'INFO'
 MONGODB_URI = 'mongodb://localhost:27017'
-MONGODB_DATABASE = 'bpp'
-MONGODB_COLLECTION = 'items'
+MONGODB_DATABASE = 'scrapy'
+MONGODB_COLLECTION = 'bpp_india'
