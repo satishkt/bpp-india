@@ -28,4 +28,26 @@ class BillionPricesIndiaItem(scrapy.Item):
     weight = Field()
     product_url = Field()
 
+
+
+class IOPIndiaItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    date = Field()
+    product = Field()
+    product_name = Field()
+    quantity = Field()
+    category = Field()
+    description = Field()
+    vendor = Field()
+    price = Field()
+    store = Field()
+    country = Field()
+    state = Field()
+    discount = Field()
+    weight = Field()
+    product_url = Field()
+
+
+
     last_updated = scrapy.Field(serializer=str)
