@@ -5,12 +5,10 @@
 # For simplicity, this file contains only the most important settings by
 # default. All the other settings are documented here:
 #
-#     http://doc.scrapy.org/en/latest/topics/settings.html
+# http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
-from scrapy import log
-
-#BOT_NAME = 'billion_prices_india'
+# BOT_NAME = 'billion_prices_india'
 
 SPIDER_MODULES = ['billion_prices_india.spiders']
 
@@ -40,14 +38,11 @@ COOKIES_DEBUG = True
 # ELASTICSEARCH_LOG_LEVEL = log.DEBUG
 
 ITEM_PIPELINES = {
-    'billion_prices_india.pipelines.MongoDBPipeline',
+    'billion_prices_india.pipelines.XmlExportPipeline': 200,
+    'scrapy_mongodb.MongoDBPipeline': 900,
 }
 
 LOG_LEVEL = 'INFO'
-
-
-
-MONGODB_SERVER = "localhost"
-MONGODB_PORT = 27017
-MONGODB_DB = "bpp"
-MONGODB_COLLECTION = 'items'
+MONGODB_URI = 'mongodb://localhost:27017'
+MONGODB_DATABASE = 'scrapy'
+MONGODB_COLLECTION = 'bpp_india'
