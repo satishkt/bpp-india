@@ -38,11 +38,10 @@ COOKIES_DEBUG = True
 # ELASTICSEARCH_LOG_LEVEL = log.DEBUG
 
 ITEM_PIPELINES = {
-    'billion_prices_india.pipelines.XmlExportPipeline': 200,
     'scrapy_mongodb.MongoDBPipeline': 900,
 }
 
 LOG_LEVEL = 'INFO'
-MONGODB_URI = 'mongodb://localhost:27017'
+MONGODB_URI = 'mongodb://54.191.241.85:27017'
 MONGODB_DATABASE = 'scrapy'
 MONGODB_COLLECTION = 'bpp_india'
