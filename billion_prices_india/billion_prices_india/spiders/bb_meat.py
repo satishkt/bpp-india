@@ -29,6 +29,11 @@ class PriceSpider(scrapy.Spider):
     allowed_domains = ["bigbasket.com"]
     start_urls = ['http://bigbasket.com/cl/meat/?sid=AooQO4SiY2OjMzUxom1kA6FjA6Jhb8I%3D']
 
+    AUTOTHROTTLE_ENABLED = True
+    AUTOTHROTTLE_DEBUG = True
+    DOWNLOAD_DELAY = 3
+    DOWNLOAD_TIMEOUT = 30
+    AUTOTHROTTLE_START_DELAY = 3
     category=""
 
     def __init__(self, *args, **kwargs):
@@ -71,8 +76,8 @@ class PriceSpider(scrapy.Spider):
         variants=hxs.select("//div[@class='uiv2-size-variants']/label/text()").extract()
         quantitylist=[]
         pricelist=[]
+        items = []
         if len(variants)!=0 or variants!=None:
-            items = []
             for variant in variants:
                 quantity=variant.split('-')[0].strip()
                 price=re.findall(r'[Rs ]\d+\.?\d*',variant)
@@ -86,28 +91,26 @@ class PriceSpider(scrapy.Spider):
                     item['category'] = self.category
                     if len(price)==1:
                         pricelist.append(price)
-                        item['price']=price[0]
+                        item['price']=price[0].strip()
                     elif len(price)!=1:
                         pricelist.append(price)
-                        item['price']=price[1]
-
+                        item['price']=price[1].strip()
                     items.append(item)
-            else:
+        else:
+            price=hxs.select("//div[@class='uiv2-price']/text()").extract()
+            quantity=hxs.select("//div[@class='uiv2-field-wrap mt10']/text()").extract()[0].strip()
+            item = BillionPricesIndiaItem()
+            item['quantity'] = quantity
+            item['date']=str(time.strftime("%d/%m/%Y"))
+            item['vendor']='bigbasket'
+            item['product'] = productTitle
+            item['category'] = self.category
 
-                price=hxs.select("//div[@class='uiv2-price']/text()").extract()
-                quantity=hxs.select("//div[@class='uiv2-field-wrap mt10']/text()").extract()[0].strip()
-                item = BillionPricesIndiaItem()
-                item['quantity'] = quantity
-                item['date']=str(time.strftime("%d/%m/%Y"))
-                item['vendor']='bigbasket'
-                item['product'] = productTitle
-                item['category'] = self.category
-
-                if len(price)==1 and price not in pricelist:
-                    item['price']=price[0]
-                elif len(price)!=1 and price not in pricelist:
-                    item['price']=price[1]
-                items.append(item)
+            if len(price)==1 and price not in pricelist:
+                item['price']=price[0].split(" ")[-1:][0].strip()
+            elif len(price)!=1 and price not in pricelist:
+                item['price']=price[1].split(" ")[-1:][0].strip()
+            items.append(item)
 
         return items
 
