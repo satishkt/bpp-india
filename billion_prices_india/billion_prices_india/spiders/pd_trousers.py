@@ -33,6 +33,12 @@ class PriceSpider(scrapy.Spider):
     crawledURL = []
     detailedCrawled = []
 
+    AUTOTHROTTLE_ENABLED = True
+    AUTOTHROTTLE_DEBUG = True
+    DOWNLOAD_DELAY = 3
+    DOWNLOAD_TIMEOUT = 30
+    AUTOTHROTTLE_START_DELAY = 3
+
     def __init__(self, *args, **kwargs):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
         ScrapyFileLogObserver(open("spider_error.log", 'w'), level=logging.ERROR).start()
