@@ -8,6 +8,7 @@
 from scrapy.contrib.exporter import CsvItemExporter
 
 from billion_prices_india.items import BillionPricesIndiaItem
+from billion_prices_india import *
 
 # os = rawes.Elastic('http://localhost:9200')
 
@@ -18,6 +19,8 @@ from billion_prices_india.items import BillionPricesIndiaItem
 #     import json
 from scrapy import signals
 from scrapy.contrib.exporter import XmlItemExporter
+
+
 
 class NaivePipeline(object):
     def process_item(self, item, spider):
@@ -65,6 +68,7 @@ class XmlExportPipeline(object):
         return pipeline
 
     def spider_opened(self, spider):
+
         file = open('%s_products.xml' % spider.name, 'w+b')
         self.files[spider] = file
         self.exporter = XmlItemExporter(file)
@@ -95,3 +99,39 @@ class JsonWithEncodingPipeline(object):
 
     def spider_closed(self, spider):
         self.file.close()
+
+
+
+
+import pymongo
+
+from scrapy.exceptions import DropItem
+from scrapy.conf import settings
+from scrapy import log
+class MongoDBPipeline(object):
+    db=None
+    def __init__(self):
+        self.server = settings['MONGODB_SERVER']
+        self.port = settings['MONGODB_PORT']
+        self.db = settings['MONGODB_DB']
+        self.col = settings['MONGODB_COLLECTION']
+        connection = pymongo.Connection(self.server, self.port)
+        db = connection[self.db]
+        self.collection = db[self.col]
+
+
+    def process_item(self, item, spider):
+
+    	valid = True
+        for data in item:
+          # here we only check if the data is not null
+          # but we could do any crazy validation we want
+       	  if not data:
+            valid = False
+            raise DropItem("Missing %s of blogpost from %s" %(data, item['url']))
+        if valid:
+          self.collection.insert(dict(item))
+          log.msg("Item wrote to MongoDB database %s/%s" %
+                  (settings['MONGODB_DB'], settings['MONGODB_COLLECTION']),
+                  level=log.DEBUG, spider=spider)
+        return item
