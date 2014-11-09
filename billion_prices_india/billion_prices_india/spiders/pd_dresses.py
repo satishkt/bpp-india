@@ -67,8 +67,8 @@ class PriceSpider(scrapy.Spider):
     def detail(self, response):
         log.msg(response.url)
         hxs = HtmlXPathSelector(response)
-        variants_price=hxs.select("//li[@class='activelist']/@data-price").extract()
-        variants_seller=hxs.select("//div[@class='storeimage']/img/@alt").extract()
+        variants_price=hxs.select("//ul[@class='featuredstore']//div[@class='sellerprice']/text()").extract()
+        variants_seller=hxs.select("//ul[@class='featuredstore']//img/@src").extract()
         quantitylist=[]
         pricelist=[]
         items=[]
@@ -81,7 +81,7 @@ class PriceSpider(scrapy.Spider):
                 item['vendor'] = seller.split(" ")[-1:][0]
                 item['product'] = response.url.split('/')[-1].split(".")[0]
                 item['category'] = "dresses"
-                item['price'] = price
+                item['price'] = re.sub('[,]', '', price)
                 items.append(item)
         return items
 

@@ -34,6 +34,13 @@ class PriceSpider(scrapy.Spider):
     crawledURL = []
     detailedCrawled = []
 
+    AUTOTHROTTLE_ENABLED = True
+    AUTOTHROTTLE_DEBUG = True
+    DOWNLOAD_DELAY = 3
+    DOWNLOAD_TIMEOUT = 30
+    AUTOTHROTTLE_START_DELAY = 3
+
+
     def __init__(self, *args, **kwargs):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
         ScrapyFileLogObserver(open("spider_error.log", 'w'), level=logging.ERROR).start()
@@ -71,6 +78,7 @@ class PriceSpider(scrapy.Spider):
              av_price.append(reduce(lambda x, y: float(x) + float(y) / float(len(price_list)), price_list, 0))
         for price, date in zip(variants_price, variants_date):
             item = BillionPricesIndiaItem()
+            item['quantity'] = '1L'
             item['date'] = date
             item['vendor'] = "ioc"
             item['product'] = "gasoline"
