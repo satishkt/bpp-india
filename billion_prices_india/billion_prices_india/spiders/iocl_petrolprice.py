@@ -45,6 +45,30 @@ class PriceSpider(scrapy.Spider):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
         ScrapyFileLogObserver(open("spider_error.log", 'w'), level=logging.ERROR).start()
 
+    def __unit_price(self,price,quantity):
+        m = re.match(r"(\d+) (\w+)",quantity)
+        value=m.group(1)
+        type=m.group(2)
+        unitprice=0
+        if type.lower().strip()=="kg":
+            value=float(value)
+            unitprice=float(price)/float(value)
+        elif type.lower().strip()=="gm":
+            value=float(value)/1000
+            unitprice=float(price)/(float(value)/1000)
+        elif type.lower().strip()=="pcs":
+            value=float(value)
+            unitprice=float(price)/float(value)
+        elif type.lower().strip()=="lt":
+            value=float(value)
+            unitprice=float(price)/float(value)
+        elif type.lower().strip()=="ml":
+            value=float(value)/1000
+            unitprice=float(price)/(float(value)/1000)
+        else:
+            unitprice=0.00
+
+        return value,type,unitprice
 
     def __getHostURL(self,url):
         parsed_uri = urlparse(url)
@@ -78,12 +102,19 @@ class PriceSpider(scrapy.Spider):
              av_price.append(reduce(lambda x, y: float(x) + float(y) / float(len(price_list)), price_list, 0))
         for price, date in zip(variants_price, variants_date):
             item = BillionPricesIndiaItem()
-            item['quantity'] = '1L'
+            quantity='1 lt'
             item['date'] = date
             item['vendor'] = "ioc"
             item['product'] = "gasoline"
             item['category'] = "oil and gas"
+
+            value,measure,unitprice=self.__unit_price(price,quantity)
             item['price'] = price
+            item['quantity'] = value
+            item['measure']= measure
+            item['unitprice']=unitprice
+
+
             items.append(item)
         return items
 

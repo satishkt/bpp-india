@@ -38,6 +38,32 @@ class PriceSpider(scrapy.Spider):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
         ScrapyFileLogObserver(open("spider_error.log", 'w'), level=logging.ERROR).start()
 
+    def __unit_price(self,price,quantity):
+        m = re.match(r"(\d+) (\w+)",quantity)
+        value=str(m.group(1))
+        type=str(m.group(2))
+        price=float(str(price).strip())
+        unitprice=0
+        value=float(value)
+
+        if type.lower().strip()=="kg":
+            unitprice=price/value
+        elif type.lower().strip()=="gm":
+            unitprice=price/(value/1000)
+        elif type.lower().strip()=="pcs":
+            unitprice=price/value
+        elif type.lower().strip()=="lt":
+            unitprice=price/value
+        elif type.lower().strip()=="ltr":
+            unitprice=price/value
+        elif type.lower().strip()=="ml":
+            unitprice=price/(value/1000)
+        else:
+            unitprice=0
+
+        return value,type,unitprice
+
+
 
     def __getHostURL(self,url):
         parsed_uri = urlparse(url)
@@ -84,23 +110,29 @@ class PriceSpider(scrapy.Spider):
                 if quantity not in quantitylist or price not in pricelist:
                     item = BillionPricesIndiaItem()
                     quantitylist.append(quantity)
-                    item['quantity'] = quantity
                     item['date']=str(time.strftime("%d/%m/%Y"))
                     item['vendor']='bigbasket'
                     item['product'] = productTitle
                     item['category'] = self.category
+                    p_price=""
                     if len(price)==1:
                         pricelist.append(price)
                         item['price']=price[0].strip()
+                        p_price=price[0].strip()
                     elif len(price)!=1:
                         pricelist.append(price)
                         item['price']=price[1].strip()
+                        p_price=price[1].strip()
+                    value,measure,unitprice=self.__unit_price(p_price,quantity)
+                    item['quantity'] = value
+                    item['measure']= measure
+                    item['unitprice']=unitprice
+
                     items.append(item)
         else:
             price=hxs.select("//div[@class='uiv2-price']/text()").extract()
             quantity=hxs.select("//div[@class='uiv2-field-wrap mt10']/text()").extract()[0].strip()
             item = BillionPricesIndiaItem()
-            item['quantity'] = quantity
             item['date']=str(time.strftime("%d/%m/%Y"))
             item['vendor']='bigbasket'
             item['product'] = productTitle
@@ -108,11 +140,16 @@ class PriceSpider(scrapy.Spider):
 
             if len(price)==1 and price not in pricelist:
                 item['price']=price[0].split(" ")[-1:][0].strip()
+                p_price=price[0].split(" ")[-1:][0].strip()
             elif len(price)!=1 and price not in pricelist:
                 item['price']=price[1].split(" ")[-1:][0].strip()
+                p_price=price[1].split(" ")[-1:][0].strip()
+
+            value,measure,unitprice=self.__unit_price(p_price,quantity)
+            item['quantity'] = value
+            item['measure']= measure
+            item['unitprice']=unitprice
             items.append(item)
-
         return items
-
 if __name__ == '__main__':
 	obj=PriceSpider()
