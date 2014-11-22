@@ -26,9 +26,9 @@ import time
 
 class PriceSpider(scrapy.Spider):
 
-    name = "pd_televisions"
+    name = "pd_tv"
     allowed_domains = ["pricedekho.com"]
-    start_urls = ['http://pricedekho.com/televisions/%s+televisions-price-list' %s for s in ['samsung','song','lg','philips','panasonic','salora','weston']]
+    start_urls = ['http://pricedekho.com/televisions/%s+televisions-price-list.html' %s for s in ['samsung','song','lg','philips','panasonic','salora','weston']]
     crawledURL = []
     detailedCrawled = []
 
@@ -79,8 +79,13 @@ class PriceSpider(scrapy.Spider):
                 item['date'] = time.strftime("%d/%m/%Y")
                 item['vendor'] = seller.split(" ")[-1:][0]
                 item['product'] = response.url.split('/')[-1].split(".")[0]
-                item['category'] = "tv"
-                item['price'] = re.sub('[,]', '', price)
+                itemprice=re.sub('[,]', '', price).split(" ")[-1:][0]
+                item['category'] = "TVs"
+                item['price'] = itemprice
+                item['quantity'] = '1'
+                item['measure']= 'pcs'
+                item['unitprice']=itemprice
+
                 items.append(item)
         return items
 

@@ -8,7 +8,7 @@ from scrapy.log import ScrapyFileLogObserver
 import scrapy
 from scrapy.selector import HtmlXPathSelector
 from scrapy import log
-
+import re
 from billion_prices_india.items import BillionPricesIndiaItem
 import time
 
@@ -69,8 +69,13 @@ class PriceSpider(scrapy.Spider):
                 item['date'] = time.strftime("%d/%m/%Y")
                 item['vendor'] = seller.split(" ")[-1:][0]
                 item['product'] = response.url.split('/')[-1].split(".")[0]
-                item['category'] = "mobiles"
-                item['price'] = re.sub('[,]', '', price)
+                itemprice=re.sub('[,]', '', price).split(" ")[-1:][0]
+                item['category'] = "laptops"
+                item['price'] = itemprice
+                item['quantity'] = '1'
+                item['measure']= 'pcs'
+                item['unitprice']=itemprice
+
                 items.append(item)
         return items
 
