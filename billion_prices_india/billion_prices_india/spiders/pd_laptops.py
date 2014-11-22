@@ -71,10 +71,10 @@ class PriceSpider(scrapy.Spider):
                 item['product'] = response.url.split('/')[-1].split(".")[0]
                 itemprice=re.sub('[,]', '', price).split(" ")[-1:][0]
                 item['category'] = "laptops"
-                item['price'] = float(itemprice)
+                item['price'] = itemprice
                 item['quantity'] = '1'
                 item['measure']= 'pcs'
-                item['unitprice']=float(itemprice)
+                item['unitprice']=itemprice
 
                 items.append(item)
         return items
