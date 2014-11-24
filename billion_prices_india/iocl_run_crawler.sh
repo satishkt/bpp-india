@@ -1,0 +1,1 @@
+scrapy crawl iocl_petrolprices
