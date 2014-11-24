@@ -11,11 +11,13 @@
 # BOT_NAME = 'billion_prices_india'
 
 SPIDER_MODULES = ['billion_prices_india.spiders']
-
+RETRY_TIMES = 10
+RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 
 DOWNLOADER_MIDDLEWARES = {
     'billion_prices_india.middleware.CustomHttpProxyMiddleware': 543,
     'billion_prices_india.middleware.CustomUserAgentMiddleware': 545,
+    'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware': 200,
 }
 
 COOKIES_ENABLED = True
