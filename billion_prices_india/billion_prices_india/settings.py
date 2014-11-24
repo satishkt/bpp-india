@@ -12,6 +12,7 @@
 
 SPIDER_MODULES = ['billion_prices_india.spiders']
 
+
 DOWNLOADER_MIDDLEWARES = {
     'billion_prices_india.middleware.CustomHttpProxyMiddleware': 543,
     'billion_prices_india.middleware.CustomUserAgentMiddleware': 545,
@@ -42,6 +43,6 @@ ITEM_PIPELINES = {
 }
 
 LOG_LEVEL = 'INFO'
-MONGODB_URI = 'mongodb://54.191.241.85:27017'
+MONGODB_URI = 'mongodb://54.148.179.83:27017'
 MONGODB_DATABASE = 'scrapy'
 MONGODB_COLLECTION = 'bpp_india'
