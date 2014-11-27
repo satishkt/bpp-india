@@ -26,7 +26,7 @@ class PriceSpider(scrapy.Spider):
 
     name = "pc_otg"
     allowed_domains = ["pricecheckindia.com"]
-    start_urls = ['http://api.pricecheckindia.com/feed/product/tablets.json?user=mandeepa&key=UPIFDOZVNPOVPFSF']
+    start_urls = ['http://api.pricecheckindia.com/feed/product/otg.json?user=mandeepa&key=UPIFDOZVNPOVPFSF']
 
     AUTOTHROTTLE_ENABLED = True
     AUTOTHROTTLE_DEBUG = True
@@ -45,7 +45,7 @@ class PriceSpider(scrapy.Spider):
         for result in results['product']:
             item = BillionPricesIndiaItem()
             item['product'] = result['model']
-            item['category'] = "Microwave"
+            item['category'] = "Otg"
             if len(result['stores']) >0:
                 for store in result['stores']:
                     price=float(store['price'])
