@@ -45,7 +45,7 @@ class PriceSpider(scrapy.Spider):
         for result in results['product']:
             item = BillionPricesIndiaItem()
             item['product'] = result['model']
-            item['category'] = "Dslr"
+            item['category'] = "DSLR"
             if len(result['stores']) >0:
                 for store in result['stores']:
                     price=float(store['price'])
