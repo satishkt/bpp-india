@@ -28,14 +28,14 @@ class PriceSpider(scrapy.Spider):
 
     name = "pd_tv"
     allowed_domains = ["pricedekho.com"]
-    start_urls = ['http://pricedekho.com/televisions/%s+televisions-price-list.html' %s for s in ['samsung','song','lg','philips','panasonic','salora','weston']]
+    start_urls = ['http://pricedekho.com/televisions/%s+televisions-price-list.html' %s for s in ['sony','samsung','lg','philips','panasonic','salora','weston']]
     crawledURL = []
     detailedCrawled = []
 
     AUTOTHROTTLE_ENABLED = True
     AUTOTHROTTLE_DEBUG = True
     DOWNLOAD_DELAY = 3
-    DOWNLOAD_TIMEOUT = 30
+    DOWNLOAD_TIMEOUT = 180
     AUTOTHROTTLE_START_DELAY = 3
 
     def __init__(self, *args, **kwargs):

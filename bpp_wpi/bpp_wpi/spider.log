@@ -1,0 +1,10 @@
+2014-11-28 08:28:38+0530 [scrapy] INFO: Scrapy 0.24.4 started (bot: bpp_wpi)
+2014-11-28 08:28:38+0530 [scrapy] INFO: Optional features available: ssl, http11, boto
+2014-11-28 08:28:38+0530 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'bpp_wpi.spiders', 'SPIDER_MODULES': ['bpp_wpi.spiders'], 'LOG_LEVEL': 'INFO', 'BOT_NAME': 'bpp_wpi'}
+2014-11-28 08:28:38+0530 [scrapy] INFO: Enabled extensions: LogStats, TelnetConsole, CloseSpider, WebService, CoreStats, SpiderState
+2014-11-28 08:28:39+0530 [scrapy] INFO: Enabled downloader middlewares: RetryMiddleware, HttpAuthMiddleware, DownloadTimeoutMiddleware, UserAgentMiddleware, CustomHttpProxyMiddleware, CustomUserAgentMiddleware, DefaultHeadersMiddleware, MetaRefreshMiddleware, HttpCompressionMiddleware, RedirectMiddleware, CookiesMiddleware, ChunkedTransferMiddleware, DownloaderStats
+2014-11-28 08:28:39+0530 [scrapy] INFO: Enabled spider middlewares: HttpErrorMiddleware, OffsiteMiddleware, RefererMiddleware, UrlLengthMiddleware, DepthMiddleware
+2014-11-28 08:28:39+0530 [scrapy] INFO: Connected to MongoDB mongodb://54.148.179.83:27017, using "scrapy/bpp_wpi"
+2014-11-28 08:28:39+0530 [scrapy] INFO: Enabled item pipelines: MongoDBPipeline
+2014-11-28 08:28:39+0530 [dw_retailprice_urad_dal] INFO: Spider opened
+2014-11-28 08:28:39+0530 [dw_retailprice_urad_dal] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
