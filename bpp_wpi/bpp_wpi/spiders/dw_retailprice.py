@@ -36,9 +36,9 @@ class PriceSpider(scrapy.Spider):
 
     AUTOTHROTTLE_ENABLED = True
     AUTOTHROTTLE_DEBUG = True
-    DOWNLOAD_DELAY = 3
+    DOWNLOAD_DELAY = 10
     DOWNLOAD_TIMEOUT = 180
-    AUTOTHROTTLE_START_DELAY = 3
+    AUTOTHROTTLE_START_DELAY = 10
     category=""
 
     def __init__(self, *args, **kwargs):
