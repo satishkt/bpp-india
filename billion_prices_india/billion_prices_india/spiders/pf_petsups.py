@@ -18,7 +18,7 @@ class PepperFry(scrapy.Spider):
     """Scrape pet supplies tab from pepper fry"""
     name = "pf_petsupply"
     start_urls = ['http://www.pepperfry.com/pet-supplies-%s.html' % s for s in
-                  ['food-treats']]
+                  ['dogs-food-treats','dogs-grooming','dogs-toys','training-behavior','collars-leashes','beds-furniture','feeding-accessories','health-wellness','clothing-accessories']]
     allowed_domains = ["pepperfry.com"]
     AUTOTHROTTLE_ENABLED = True
     AUTOTHROTTLE_DEBUG = True
