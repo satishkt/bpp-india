@@ -51,7 +51,7 @@ class PepperFry(scrapy.Spider):
 
     def pagescrape(self, response):
         hxs = HtmlXPathSelector(response)
-        prod_urls = hxs.xpath('//*[@class="row"]/div[1]/div[1]/a/@href')
+        prod_urls = hxs.xpath('//*[@class="row"]/div/div/a/@href')
         for url in prod_urls:
             if url not in self.detailedCrawled:
                 link = url.extract()

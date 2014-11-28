@@ -54,6 +54,7 @@ class LocalBanya2Crawler(CrawlSpider):
         item['city'] = 'Mumbai'
         item['state'] = 'Maharashtra'
         item['country'] = 'India'
+        item['date']=str(time.strftime("%d/%m/%Y"))
 
 
         return item

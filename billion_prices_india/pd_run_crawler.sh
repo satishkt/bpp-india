@@ -1,3 +1,4 @@
+#!/bin/sh
 scrapy crawl pd_trousers
 
 scrapy crawl pd_bathbody
