@@ -21,48 +21,39 @@ from bs4 import UnicodeDammit
 from urlparse import urlparse
 import logging
 import time
-
+import requests
 class PriceSpider(scrapy.Spider):
 
-    name = "dw_retailprice_Tea"
+    name = "dw_retailprice"
     allowed_domains = ["dataweave.in"]
-    user="mandeepa"
-    apikey=""
-    startdate=""
-    enddate=""
-    start_urls = ['http://api.dataweave.in/v1/retail_prices_india/findByCityAndCommodity/?api_key=67fbcf2894171449d53099c1d3079956fe0dd8d8&city=%s&commodity=Tea Loose&start_date=20130101&end_date=20140101&page=1&per_page=1' %city for city in ['CHANDIGARH','DELHI','HISAR','KARNAL','SHIMLA','MANDI','SRINAGAR','JAMMU','AMRITSAR','LUDHIANA','BHATINDA','LUCKNOW','KANPUR','VARANASI','AGRA','DEHRADUN','RAIPUR','AHMEDABAD','RAJKOT','BHOPAL','INDORE','MUMBAI','NAGPUR','JAIPUR','JODHPUR','KOTA','PATNA','BHAGALPUR','RANCHI','BHUBANESHWAR','CUTTACK','GUWAHATI','SAMBALPUR','KOLKATA','SILIGURI','ITANAGAR','SHILLONG','AIZWAL','DIMAPUR','AGARTALA','HYDERABAD','VIJAYWADA','BENGALURU','ERNAKULAM','THIRUCHIRAPALLI']
-                 ]
-
-
-    AUTOTHROTTLE_ENABLED = True
-    AUTOTHROTTLE_DEBUG = True
-    DOWNLOAD_DELAY = 10
-    DOWNLOAD_TIMEOUT = 180
-    AUTOTHROTTLE_START_DELAY = 10
-    category=""
+    apikey="98f8ff1940ba3da0d8a6b70bb1e02510b9d2d7cb"
+    start_urls = ['http://api.dataweave.in/v1/retail_prices_india']
+    start_date="20130101"
+    end_date="20140101"
 
     def __init__(self, *args, **kwargs):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
         ScrapyFileLogObserver(open("spider_error.log", 'w'), level=logging.ERROR).start()
 
-
-    def getItems(self,jsonstr):
-        results = json.loads(jsonstr)
-        print(results)
-        items=[]
-        for result in results['data']:
-            item = BppWpiItem()
-            item['date']=result['date']
-            item['zone'] = result['zone']
-            item['center'] = result['centre']
-            item['commodity'] = result['commodity']
-            item['price'] = float(result['price'])
-            items.append(item)
-        return items
-
-
     def parse(self, response):
-        self.getItems(response.body)
+
+        urlcities="http://api.dataweave.in/v1/retail_prices_india/listAllCities/?api_key=%s"%(self.apikey)
+        urlcommodities="http://api.dataweave.in/v1/retail_prices_india/listAllCommodities/?api_key=%s"%(self.apikey)
+
+        cities= requests.get(urlcities)
+        commodities=requests.get(urlcommodities)
+        for city in cities.json()["data"]:
+            for commodity in commodities.json()["data"]:
+                url="http://api.dataweave.in/v1/retail_prices_india/findByCityAndCommodity/?api_key=%s&city=%s&commodity=%s&start_date=%s&end_date=%s&page=1&per_page=10"%(self.apikey,city,commodity,self.start_date,self.end_date)
+                results= requests.get(url)
+                for result in results.json()['data']:
+                    item = BppWpiItem()
+                    item['date']=result['date']
+                    item['zone'] = result['zone']
+                    item['center'] = result['centre']
+                    item['commodity'] = result['commodity']
+                    item['price'] = float(result['price'])
+                    yield item
 
 
 
