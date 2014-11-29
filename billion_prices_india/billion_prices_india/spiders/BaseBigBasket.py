@@ -114,7 +114,7 @@ class PriceSpiderBase(scrapy.Spider):
                         item['quantity'] = value
                         item['measure']= measure
                         item['unitprice']=unitprice
-                        yield item
+                        items.append(item)
         else :
             price=hxs.select("//div[@class='uiv2-price']/text()").extract()
             quantity=hxs.select("//div[@class='uiv2-field-wrap mt10']/text()").extract()[0].strip()
@@ -136,8 +136,8 @@ class PriceSpiderBase(scrapy.Spider):
                 item['quantity'] = value
                 item['measure']= measure
                 item['unitprice']=unitprice
-                yield item
+                items.append(item)
 
-
+        return items
 
 
