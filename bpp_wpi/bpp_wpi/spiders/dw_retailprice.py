@@ -46,6 +46,7 @@ class PriceSpider(scrapy.Spider):
             for commodity in commodities.json()["data"]:
                 url="http://api.dataweave.in/v1/retail_prices_india/findByCityAndCommodity/?api_key=%s&city=%s&commodity=%s&start_date=%s&end_date=%s&page=1&per_page=10"%(self.apikey,city,commodity,self.start_date,self.end_date)
                 results= requests.get(url)
+                items=[]
                 for result in results.json()['data']:
                     item = BppWpiItem()
                     item['date']=result['date']
@@ -53,7 +54,8 @@ class PriceSpider(scrapy.Spider):
                     item['center'] = result['centre']
                     item['commodity'] = result['commodity']
                     item['price'] = float(result['price'])
-                    yield item
+                    items.append(item)
+                return items
 
 
 
