@@ -17,3 +17,12 @@ billion_prices_india/.idea/workspace.xml
 # Generated compiled files such as .pyc
 #
 #
+billion_prices_india/billion_prices_india/spiders/lb/__init__.pyc
+billion_prices_india/billion_prices_india/spiders/lb/lb_stationery.pyc
+billion_prices_india/billion_prices_india/spiders/lb/LocalBanya2Crawler.pyc
+billion_prices_india/billion_prices_india/spiders/lb/fruitsandveg/__init__.pyc
+billion_prices_india/billion_prices_india/spiders/lb/fruitsandveg/lb_colddriedfruits.pyc
+billion_prices_india/billion_prices_india/spiders/lb/fruitsandveg/lb_exoticfruitsveg.pyc
+billion_prices_india/billion_prices_india/spiders/lb/fruitsandveg/lb_fruits.pyc
+billion_prices_india/billion_prices_india/spiders/lb/fruitsandveg/lb_leafies.pyc
+billion_prices_india/billion_prices_india/spiders/lb/fruitsandveg/lb_vegfruits.pyc
