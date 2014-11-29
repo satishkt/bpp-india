@@ -18,7 +18,7 @@ class PepperFry(scrapy.Spider):
     """Scrape pet supplies tab from pepper fry"""
     name = "pf_hkdecor"
     start_urls = ['http://www.pepperfry.com/laundry-housekeeping-fragrances-%s.html' % s for s in
-                  ['diffusers-sprayers', 'candles', 'air-fresheners', 'potpourri','incense']]
+                  ['diffusers-sprayers', 'candles', 'air-fresheners', 'potpourri','incense']].append('http://www.pepperfry.com/home-decor-celebrations-festive-lights.html')
 
     allowed_domains = ["pepperfry.com"]
     AUTOTHROTTLE_ENABLED = True
