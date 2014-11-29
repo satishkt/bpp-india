@@ -4,19 +4,9 @@ import re
 
 from scrapy.log import ScrapyFileLogObserver
 import scrapy
-from scrapy.selector import HtmlXPathSelector
-from scrapy import log
 from billion_prices_india.items import BillionPricesIndiaItem
 from scrapy.selector import HtmlXPathSelector
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-from scrapy.contrib.spiders import CrawlSpider, Rule
-from scrapy.http import Request
 from scrapy import log
-from os import path
-import os
-import urllib
-import string
-from bs4 import UnicodeDammit
 from urlparse import urlparse
 import logging
 import time
@@ -26,12 +16,6 @@ class PriceSpiderBase(scrapy.Spider):
     allowed_domains = ["bigbasket.com"]
 
     category=""
-
-    AUTOTHROTTLE_ENABLED = True
-    AUTOTHROTTLE_DEBUG = True
-    DOWNLOAD_DELAY = 3
-    DOWNLOAD_TIMEOUT = 30
-    AUTOTHROTTLE_START_DELAY = 3
 
     def __init__(self, *args, **kwargs):
         ScrapyFileLogObserver(open("spider.log", 'w'), level=logging.INFO).start()
