@@ -38,10 +38,6 @@ class LocalBanya2Crawler(CrawlSpider):
         if not price:
             price = selector.xpath(
                 '//*[@id="product_detail_view_1"]/div/div[4]/div[2]/span[2]/text()').extract()
-
-
-
-
         l = ItemLoader(item=BillionPricesIndiaItem(), response=response)
         l.add_xpath('product_name', '//*[@id="inner"]/div[1]/div[1]/div/div/text()')
         l.add_xpath('quantity', '//*[@id="product_detail_view_1"]/div/div[1]/div/text()')
