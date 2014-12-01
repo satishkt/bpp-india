@@ -17,11 +17,6 @@ from billion_prices_india.items import BillionPricesIndiaItem
 class BasePepperFry(scrapy.Spider):
     """Scrape pet supplies tab from pepper fry"""
     allowed_domains = ["pepperfry.com"]
-    AUTOTHROTTLE_ENABLED = True
-    AUTOTHROTTLE_DEBUG = True
-    DOWNLOAD_DELAY = 3
-    DOWNLOAD_TIMEOUT = 30
-    AUTOTHROTTLE_START_DELAY = 3
     crawledURL = []
     detailedCrawled = []
     crawledPageUrls = []
