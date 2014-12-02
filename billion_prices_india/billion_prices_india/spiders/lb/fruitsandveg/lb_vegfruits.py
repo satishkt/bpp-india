@@ -74,17 +74,17 @@ class LbFruitsVegetables(scrapy.Spider):
             print item
             return item
 
-
-            if(total_products_number  20):
-                left_products=total_products_number
-                load_pg_url = 'http://www.localbanya.com/home/next_page?task=products&subcat_id={}&start={}&total={}&sort='
-                increment=20
-                while left_products > 0:
-                    sub_url = load_pg_url.format(categ_id,increment,total_products_number)
-                    yield scrapy.Request(sub_url,callback= self.scrape_using_bs)
-                    increment=increment+20
-                    left_products=total_products_number-increment
-                    #http://www.localbanya.com/home/next_page?task=products&subcat_id=32&start=20&total=64&sort=
-
-//*[@id="second"]/div/a/div[2]
+#
+#             if(total_products_number  20):
+#                 left_products=total_products_number
+#                 load_pg_url = 'http://www.localbanya.com/home/next_page?task=products&subcat_id={}&start={}&total={}&sort='
+#                 increment=20
+#                 while left_products > 0:
+#                     sub_url = load_pg_url.format(categ_id,increment,total_products_number)
+#                     yield scrapy.Request(sub_url,callback= self.scrape_using_bs)
+#                     increment=increment+20
+#                     left_products=total_products_number-increment
+#                     #http://www.localbanya.com/home/next_page?task=products&subcat_id=32&start=20&total=64&sort=
+#
+# //*[@id="second"]/div/a/div[2]
 
