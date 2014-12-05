@@ -46,7 +46,7 @@ class PriceSpider(scrapy.Spider):
 
                 for result in results.json()['data']:
                      item = BppWpiItem()
-                     item[city]='Hyderabad'
+                     item['center']='Hyderabad'
                      item['date']=result['date']
                      if result['24 Hours Rainfall'][0]=='NIL':
                          item['rainfall'] ='0'
