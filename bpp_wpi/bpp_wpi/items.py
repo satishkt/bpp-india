@@ -17,4 +17,5 @@ class BppWpiItem(scrapy.Item):
     center = Field()
     commodity = Field()
     price = Field()
+    rainfall=Field()
     last_updated = scrapy.Field(serializer=str)
