@@ -14,8 +14,7 @@ class SemicolonValueProtocol(object):
         return ';'.join(str(v) for v in values)
 
 
-class MRPoductID(MRJob):
-    OUTPUT_PROTOCOL = SemicolonValueProtocol
+class MRPoductIDJoin(MRJob):
 
     def init_get_pprices(self):
         self.pp = {}
@@ -45,4 +44,5 @@ class MRPoductID(MRJob):
 
 if __name__ == '__main__':
     MRPoductID.run()
+
 
