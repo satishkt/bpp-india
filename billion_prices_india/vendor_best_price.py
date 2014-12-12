@@ -23,19 +23,35 @@ class MRPriceAnalysis(MRJob):
 
 
     def final_get_prices(self):
+        _prevAmazon=sys.float_info.max
+        _prevFlipkart=sys.float_info.max
+        store="amazon"
         for product, val in self.pp.iteritems():
-            if 'flipkart' and 'amazon' in reduce(lambda x,y: x+y,val):
+            _flatVal=reduce(lambda x,y: x+y,val)
+            if 'flipkart' and 'amazon' in _flatVal:
+                _flip=_flatVal.count('flipkart')
+                _ama=_flatVal.count('amazon')
                 for store,price in val:
                     if store=='flipkart' or store=='amazon':
                         if price[-1]=="L":
                             price=float(price[:-1])*100000
                         else:
                             price=float(price)
-                        _store=store
-                        yield _store,price
+                        if store=='amazon':
+                            _ama=_ama-1
+                            if price<_prevAmazon:
+                                _prevAmazon=price
+                            if _ama==0:
+                                yield store,_prevAmazon
+                        else:
+                            _flip=_flip-1
+                            if price<_prevFlipkart:
+                                _prevFlipkart=price
+                            if _flip==0:
+                                yield store,_prevFlipkart
 
-    def average_price(self, store, value):
-        yield store, sum(value)
+    def average_price(self, store, values):
+        yield store,sum(values)
 
 
     def steps(self):
