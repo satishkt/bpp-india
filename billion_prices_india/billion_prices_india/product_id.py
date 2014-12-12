@@ -11,7 +11,7 @@ class SemicolonValueProtocol(object):
     # don't need to implement read() since we aren't using it
 
     def write(self, key, values):
-        return ';'.join(str(v) for v in values)
+        return ','.join(str(v) for v in values)
 
 
 class MRPoductID(MRJob):
@@ -24,8 +24,7 @@ class MRPoductID(MRJob):
     def map_by_product(self, _, line):
         decoded = json.loads(line)
         if decoded['vendor'] <> 'PepperFry':
-            #print decoded['product'],decoded['vendor']
-            yield decoded['product'], (decoded['category'], decoded['product'])
+            yield decoded['product'], (decoded['category'], decoded['product'],decoded['vendor'],decoded['price'],decoded['measure'],decoded['date'],decoded['unitprice'],decoded['quantity'])
         #else:
             #print decoded
             #print decoded['product_name'][0],decoded['vendor']
@@ -34,7 +33,10 @@ class MRPoductID(MRJob):
 
     def reduce_by_product(self, product, values):
         product_id = uuid.uuid4()
-        yield product, (product, product_id)
+        for val in values:
+            x =','.join(str(v) for v in val)
+            yield product,(product,product_id,x)
+        #yield product, (product,product_id, values)
 
 
     def steps(self):
