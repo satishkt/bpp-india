@@ -4,8 +4,10 @@ __author__ = 'mandeepa'
 from mrjob.job import MRJob
 import re
 import sys
+from mrjob.protocol import JSONValueProtocol
 class MRPriceAnalysis(MRJob):
 
+    OUTPUT_PROTOCOL = JSONValueProtocol
 
     def init_get_pprices(self):
         self.pp = {}
@@ -51,7 +53,7 @@ class MRPriceAnalysis(MRJob):
                                 yield store,_prevFlipkart
 
     def average_price(self, store, values):
-        yield store,sum(values)
+        yield None,{'total_itemprice':sum(values),'store':store}
 
 
     def steps(self):
