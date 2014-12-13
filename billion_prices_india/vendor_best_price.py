@@ -18,34 +18,35 @@ class MRPriceAnalysis(MRJob):
         if not len(record) is 6:
              return
         category,product,vendor,date,unitprice,quantity=record
+        if unitprice!='':
+            if unitprice[-1]=="L":
+                unitprice=float(unitprice[:-1])*100000
+            else:
+                unitprice=float(unitprice)
+        else:
+            unitprice=0.0
         if product not in self.pp.keys():
-                self.pp[product]=[[vendor,unitprice]]
+            self.pp[product]=[[vendor,unitprice]]
         elif [vendor,unitprice] not in self.pp[product]:
             self.pp[product].append([vendor,unitprice])
 
 
     def final_get_prices(self):
-        _prevAmazon=sys.float_info.max
-        _prevFlipkart=sys.float_info.max
-        store="amazon"
         for product, val in self.pp.iteritems():
             _flatVal=reduce(lambda x,y: x+y,val)
-            if 'flipkart' and 'amazon' in _flatVal:
+            if 'flipkart' in _flatVal and  'amazon' in _flatVal:
                 _flip=_flatVal.count('flipkart')
                 _ama=_flatVal.count('amazon')
+                _prevAmazon=sys.float_info.max
+                _prevFlipkart=sys.float_info.max
                 for store,price in val:
-                    if store=='flipkart' or store=='amazon':
-                        if price[-1]=="L":
-                            price=float(price[:-1])*100000
-                        else:
-                            price=float(price)
                         if store=='amazon':
                             _ama=_ama-1
                             if price<_prevAmazon:
                                 _prevAmazon=price
                             if _ama==0:
                                 yield store,_prevAmazon
-                        else:
+                        elif store=="flipkart":
                             _flip=_flip-1
                             if price<_prevFlipkart:
                                 _prevFlipkart=price
@@ -53,7 +54,11 @@ class MRPriceAnalysis(MRJob):
                                 yield store,_prevFlipkart
 
     def average_price(self, store, values):
-        yield None,{'total_itemprice':sum(values),'store':store}
+        values_cnt = list(values)
+        count = len(values_cnt)
+        total=sum([value for value in values_cnt])
+        yield None,{'total':total,'itemcount':count,'average':total/count,'store':store}
+
 
 
     def steps(self):
