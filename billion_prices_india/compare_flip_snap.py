@@ -25,10 +25,10 @@ class MRPriceAnalysis(MRJob):
                 unitprice=float(unitprice)
         else:
             unitprice=0.0
-        if product not in self.pp.keys():
-            self.pp[product]=[[vendor,unitprice]]
-        elif [vendor,unitprice] not in self.pp[product]:
-            self.pp[product].append([vendor,unitprice])
+        if product+" "+date not in self.pp.keys():
+            self.pp[product+" "+date]=[[vendor,unitprice]]
+        elif [vendor,unitprice] not in self.pp[product+" "+date]:
+            self.pp[product+" "+date].append([vendor,unitprice])
 
 
     def final_get_prices(self):
