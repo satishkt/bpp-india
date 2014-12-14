@@ -40,7 +40,9 @@ class MRPriceAnalysis(MRJob):
             for store,price in val:
                 output.update({store:price})
             sorted_output = sorted(output.items(), key=operator.itemgetter(1))
-            yield None,(product,sorted_output)
+            flat_sortedOutput=reduce(lambda x,y: x+y,sorted_output)
+            yield None,{'storesLtoH':flat_sortedOutput,'product':product}
+
 
 
 
