@@ -8,20 +8,24 @@ from mrjob.protocol import JSONValueProtocol
 class MRPriceAnalysis(MRJob):
 
     OUTPUT_PROTOCOL = JSONValueProtocol
-
+    count=0
     def init_get_pprices(self):
         self.pp = {}
-
     def get_prices(self, _, line):
 
         record=line.split(",")
         if not len(record) is 6:
              return
         category,product,vendor,date,unitprice,quantity=record
-        if product not in self.pp.keys():
-                self.pp[product]=[(vendor,unitprice)]
-        elif [vendor,unitprice] not in self.pp[product]:
-            self.pp[product].append([vendor,unitprice])
+        self.count+=1
+        if self.count!=1:
+            product=product[1:-1:].strip()
+            date=date[1:-1:].strip()
+            vendor=vendor[1:-1:].strip()
+            if product not in self.pp.keys():
+                    self.pp[product]=[(vendor,unitprice)]
+            elif [vendor,unitprice] not in self.pp[product]:
+                self.pp[product].append([vendor,unitprice])
 
 
     def final_get_prices(self):
