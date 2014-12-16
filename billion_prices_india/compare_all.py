@@ -4,6 +4,7 @@ __author__ = 'mandeepa'
 from mrjob.job import MRJob
 import re
 import sys
+import ast
 from mrjob.protocol import JSONValueProtocol
 class MRPriceAnalysis(MRJob):
 
@@ -18,22 +19,23 @@ class MRPriceAnalysis(MRJob):
         if not len(record) is 6:
              return
         category,product,vendor,date,unitprice,quantity=record
+        self.count+=1
         if self.count!=1:
             product=product[1:-1:].strip()
             date=date[1:-1:].strip()
             vendor=vendor[1:-1:].strip()
-
-            if unitprice!='':
-                if unitprice[-1]=="L":
-                    unitprice=float(unitprice[:-1])*100000
+            if product!='' and vendor!='PepperFry':
+                if unitprice!='':
+                    if unitprice[-1]=="L":
+                        unitprice=ast.literal_eval(unitprice[:-1])*100000
+                    else:
+                        unitprice=ast.literal_eval(unitprice)
                 else:
-                    unitprice=float(unitprice)
-            else:
-                unitprice=0.0
-            if product+" "+date not in self.pp.keys():
-                self.pp[product+" "+date]=[[vendor,unitprice]]
-            elif [vendor,unitprice] not in self.pp[product+" "+date]:
-                self.pp[product+" "+date].append([vendor,unitprice])
+                    unitprice=0.0
+                if product+" "+date not in self.pp.keys():
+                    self.pp[product+" "+date]=[[vendor,unitprice]]
+                elif [vendor,unitprice] not in self.pp[product+" "+date]:
+                    self.pp[product+" "+date].append([vendor,unitprice])
 
 
     def final_get_prices(self):
