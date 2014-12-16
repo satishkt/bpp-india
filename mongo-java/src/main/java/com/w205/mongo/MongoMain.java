@@ -1,9 +1,8 @@
-package hortus.com.mongo.hortus;
+package com.w205.mongo;
 
 import com.mongodb.*;
 
 import java.net.UnknownHostException;
-import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 
@@ -23,7 +22,7 @@ public class MongoMain {
         BasicDBObject query = new BasicDBObject("price", regex);
         DBCursor cursor = bppIndia.find(query);
         System.out.println("No of documents to fix price for cursor = " + cursor.count());
-        /*while (cursor.hasNext()) {
+        while (cursor.hasNext()) {
             DBObject dbObject = cursor.next();
             Object price = dbObject.get("price");
             String priceStr = price.toString();
@@ -33,7 +32,7 @@ public class MongoMain {
             priceUpdate.put("price", priceStr.replace(",", ""));
             update.put("$set", priceUpdate);
             bppIndia.update(dbObject, update);
-        }*/
+        }
         cursor.close();
         mongoClient.close();
 
