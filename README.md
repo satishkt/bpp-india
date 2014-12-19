@@ -24,9 +24,9 @@ https://s3-us-west-2.amazonaws.com/midsprojectoutput/vendorpricesorted/part-0000
 Store at which item is available at minimum price -
 
 https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00000
-https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00000
-https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00000
-https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00000
+https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00001
+https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00002
+https://s3-us-west-2.amazonaws.com/midsprojectoutput/minprice/part-00003
 
 
 
